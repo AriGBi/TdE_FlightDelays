@@ -21,3 +21,28 @@ class DAO():
         cursor.close()
         conn.close()
         return result
+
+    @staticmethod
+    def getAllNodes(nMin, idMap):
+        conn = DBConnect.get_connection()
+
+        result = []
+
+        cursor = conn.cursor(dictionary=True)
+        query = """SELECT t.ID,t.IATA_CODE,count(*) as N
+                    from ( select a.ID,a.IATA_CODE , f.AIRLINE_ID , count(*)
+                    FROM airports a, flights f
+                    where a.ID =f.ORIGIN_AIRPORT_ID or a.ID =f.DESTINATION_AIRPORT_ID
+                    group by a.ID, a.IATA_CODE, f.AIRLINE_ID) t
+                    group by t.ID, t.IATA_CODE
+                    having N>=%s
+                    order by N asc"""
+
+        cursor.execute(query, (nMin,))
+
+        for row in cursor:
+            result.append(idMap[row['ID']])
+
+        cursor.close()
+        conn.close()
+        return result
