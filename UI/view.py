@@ -34,8 +34,9 @@ class View(ft.UserControl):
         #ROW3
         self._ddAereoportoD=ft.Dropdown(label="Aereoporto di Destinazione")
         self._txtInTratteMax=ft.TextField(label="Numero tratte massime")
+        self._btnPercorso = ft.ElevatedButton(text="Trova Percorso", on_click=self._controller.handlePercorso)
         self._btnCerca=ft.ElevatedButton(text="Cerca itinerario", on_click=self._controller.handleCerca)
-        row3 = ft.Row([ft.Container(self._ddAereoportoD, width=250), ft.Container(self._txtInTratteMax, width=250),ft.Container(self._btnCerca, width=250)], alignment=ft.MainAxisAlignment.CENTER)
+        row3 = ft.Row([ft.Container(self._ddAereoportoD, width=250), ft.Container(self._txtInTratteMax, width=250),ft.Container(self._btnCerca, width=250), ft.Container(self._btnPercorso, width=250)], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
         self._page.controls.append(row2)
         self._page.controls.append(row3)
