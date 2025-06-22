@@ -26,13 +26,13 @@ class View(ft.UserControl):
         row1=ft.Row([ft.Container(None, width=250),ft.Container(self._txtInCMin,width=250), ft.Container(self._btnAnalizza,width=250)], alignment=ft.MainAxisAlignment.CENTER)
 
         #ROW2
-        self._ddAeroportoP=ft.Dropdown(label="Aeroporto di Partenza")
-        self._btnConnesso=ft.ElevatedButton(text="Aeroporti connessi", on_click=self._controller.handleConnessi)
+        self._ddAeroportoP=ft.Dropdown(label="Aeroporto di Partenza", disabled=True)
+        self._btnConnesso=ft.ElevatedButton(text="Aeroporti connessi", on_click=self._controller.handleConnessi, disabled=True)
         row2 = ft.Row([ft.Container(None, width=250), ft.Container(self._ddAeroportoP, width=250),
                        ft.Container(self._btnConnesso, width=250)], alignment=ft.MainAxisAlignment.CENTER)
 
         #ROW3
-        self._ddAereoportoD=ft.Dropdown(label="Aereoporto di Destinazione")
+        self._ddAereoportoD=ft.Dropdown(label="Aereoporto di Destinazione", disabled=True)
         self._txtInTratteMax=ft.TextField(label="Numero tratte massime")
         self._btnPercorso = ft.ElevatedButton(text="Trova Percorso", on_click=self._controller.handlePercorso)
         self._btnCerca=ft.ElevatedButton(text="Cerca itinerario", on_click=self._controller.handleCerca)

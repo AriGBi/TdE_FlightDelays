@@ -11,6 +11,7 @@ class Airport:
     LATITUDE: float
     LONGITUDE: float
     TIMEZONE_OFFSET: float
+    numeroCompagne: int
 
     def __str__(self):
         return f"{self.AIRPORT}"
