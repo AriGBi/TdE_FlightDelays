@@ -34,7 +34,7 @@ class Controller:
         allNodes=self._model.getAllNodes()
         self._fillDD(allNodes)
 
-        nNodes, nEdges=self._model.getGraphDetails()
+        nNodes, nEdges, self._grafo=self._model.getGraphDetails()
         self._view.txt_result.controls.clear()
         self._view.txt_result.controls.append(ft.Text("Grafo correttamente creato"))
         self._view.txt_result.controls.append(ft.Text(f"Numero di nodi:  {nNodes}"))
@@ -94,8 +94,8 @@ class Controller:
         path,scoreTot= self._model.getCamminoOttimo(v0,v1,tint)
         self._view.txt_result.controls.clear()
         self._view.txt_result.controls.append(ft.Text(f"Il percorso ottimo fra {v0} e {v1} è: "))
-        for p in path:
-            self._view.txt_result.controls.append(ft.Text(p))
+        for i in range(0,len(path)-1):
+            self._view.txt_result.controls.append(ft.Text(f"{path[i]} - peso:  peso: {self._grafo[path[i]][path[i+1]]["weight"]}"))
 
         self._view.txt_result.controls.append(ft.Text(f"Score: {scoreTot}"))
         self._view.txt_result.controls.append(ft.Text(f"Percorso trovato in: {datetime.now() - tic}"))

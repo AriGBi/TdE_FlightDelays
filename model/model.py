@@ -76,7 +76,7 @@ class Model:
                 self._graph.add_edge(edge.aeroportoP, edge.aeroportoD, weight=edge.peso)
 
     def getGraphDetails(self):
-        return self._graph.number_of_nodes(), self._graph.number_of_edges()
+        return self._graph.number_of_nodes(), self._graph.number_of_edges(), self._graph
 
     def getAllNodes(self):
         nodes=list(self._graph.nodes())
